@@ -4,6 +4,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'main.dart';
 import 'package:flutter/widgets.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
+
+class Seeds {
+  final int id;
+  final String name;
+
+  Seeds({
+    this.id,
+    this.name,
+  });
+
+
+}
 
 
 class EnquiryUNI extends StatefulWidget {
@@ -18,6 +31,57 @@ class EnquiryUNI extends StatefulWidget {
 }
 
 class _EnquiryState extends State<EnquiryUNI> {
+
+  static List<Seeds> _Seeds = [
+    Seeds(id: 1, name: "Ultra"),
+    Seeds(id: 2, name: "Matrix"),
+    Seeds(id: 3, name: "Raider"),
+    Seeds(id: 4, name: "Avatar"),
+    Seeds(id: 5, name: "Kai"),
+    Seeds(id: 6, name: "Barrier"),
+    Seeds(id: 7, name: "Kainui"),
+    Seeds(id: 8, name: "Vision"),
+    Seeds(id: 9, name: "Appeal"),
+    Seeds(id: 10, name: "Sonik"),
+    Seeds(id: 11, name: "Vibe"),
+    Seeds(id: 12, name: "Blade"),
+    Seeds(id: 13, name: "Bullet"),
+    Seeds(id: 14, name: "Dash"),
+    Seeds(id: 15, name: "Zoom"),
+    Seeds(id: 16, name: "Mantra"),
+    Seeds(id: 17, name: "Demand"),
+    Seeds(id: 18, name: "Reaper"),
+    Seeds(id: 19, name: "Galaxie Max"),
+    Seeds(id: 20, name: "Chico"),
+    Seeds(id: 21, name: "Oracle"),
+    Seeds(id: 22, name: "Coleor"),
+    Seeds(id: 23, name: "Proteor"),
+    Seeds(id: 24, name: "Pillar"),
+    Seeds(id: 25, name: "Marco"),
+    Seeds(id: 26, name: "Geronimo"),
+    Seeds(id: 27, name: "Lactimo"),
+    Seeds(id: 28, name: "Betimo"),
+    Seeds(id: 29, name: "Laurena"),
+  ];
+  var _cultivars = _Seeds
+      .map((product) => MultiSelectItem<Seeds>(product, product.name))
+      .toList();
+
+  //List<Product> _selectedSeeds = [];
+
+  //final List<String> _cultivars = _Seeds.map((product) => product.name).toList();
+  List<Seeds>_selectedSeeds1 = [];
+
+  final _multiSelectKey = GlobalKey<FormFieldState>();
+
+  @override
+  void initState() {
+    _selectedSeeds1 = _Seeds;
+    super.initState();
+  }
+
+  @override
+
   final _emailFormKey = GlobalKey<FormState>();
   final TextEditingController customerController = new TextEditingController();
   final TextEditingController addressController = new TextEditingController();
@@ -35,9 +99,6 @@ class _EnquiryState extends State<EnquiryUNI> {
   String seedmixed = 'YES';
   String seedtreatment = 'YES';
   var _productlist = ['',
-    'Matrix Pasture Pack',
-    'Avatar Pasture Pack',
-    'Ultra/Avatar Pasture Pack',
     'Ultra AR1 diploid perennial ryegrass',
     'Matrix SE  diploid perennial ryegrass',
     'Raider NEA2  diploid perennial ryegrass',
@@ -373,165 +434,48 @@ class _EnquiryState extends State<EnquiryUNI> {
                       child: Text('select products, then click proceed:'),
                     ),
 
-// product1 container
+// add multi select product button here
                     Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 10, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product1,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product1 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(height: 40),
+                          //################################################################################################
+                          // Rounded blue MultiSelectDialogField
+                          //################################################################################################
+                          MultiSelectDialogField(
+                            items: _cultivars,
+                            title: Text("Products"),
+                            selectedColor: Colors.green,
+                            decoration: BoxDecoration(
+                              color: Colors.lightGreen[600],
+                              borderRadius: BorderRadius.all(Radius.circular(40)),
+                              border: Border.all(
+                                color: Colors.red[700],
+                                width: 2,
+                              ),
+                            ),
+
+                            buttonText: Text(
+                              "Select Products",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                            onConfirm: (results) {
+                              print(results);
+                              _selectedSeeds1 = results;
+
+                            },
+                          ),
+
+
+                        ],
                       ),
                     ),
 
-                    // product2 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product2,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product2 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-
-                    // product3 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product3,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product3 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-
-                    // product4 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product4,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product4 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-
-                    // product5 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product5,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product5 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
 
                     Container(
                       margin: EdgeInsets.fromLTRB(100, 30, 100, 0),
@@ -651,6 +595,28 @@ class _EnquiryState extends State<EnquiryUNI> {
     var _seedmixed = seedmixed;
     var _seedtreatment = seedtreatment;
 
+    // Joels Testing
+    var _selectedProducts = _selectedSeeds1
+        .map((product) => product.name)
+        .toList()
+        .join(", ");
+
+    //print(_selectedProducts);
+
+    // .map((product) => MultiSelectItem<Seeds>(product, product.name))
+
+
+    //_cultivars.map((i) => a[a.id] - 1]).toList();
+    // debugPrint(_selectedProducts[0]);
+    // var _selectedProducts = _cultivars
+    //     .map((product) => (product, product.name))
+    //     .toList();
+    //List<Product> _selectedSeeds = [];
+    //List<Seeds>_selectedProducts = _cultivars;
+
+    final _multiSelectKey = GlobalKey<FormFieldState>();
+
+
     var inputMessage = 'Name:  '
         '$_nameText\n\n'
         'Address:  '
@@ -666,11 +632,13 @@ class _EnquiryState extends State<EnquiryUNI> {
         'Preferred Retailer:\n  '
         '$_retailer\n\n'
         'Seed Products:\n  '
-        '$_product1\n  '
-        '$_product2\n  '
-        '$_product3\n  '
-        '$_product4\n  '
-        '$_product5\n\n'
+        //'------ Products ------\n'
+        '$_selectedProducts\n  '
+        // '$_product1\n  '
+        // '$_product2\n  '
+        // '$_product3\n  '
+        // '$_product4\n  '
+        // '$_product5\n\n'
         'Seed to be mixed:  '
         '$_seedmixed\n\n'
         'Seed to be treated:  '
