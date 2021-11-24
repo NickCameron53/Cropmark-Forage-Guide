@@ -14,10 +14,7 @@ class Seeds {
     this.id,
     this.name,
   });
-
-
 }
-
 
 class EnquiryUNI extends StatefulWidget {
   EnquiryUNI({Key key, this.title}) : super(key: key);
@@ -62,6 +59,9 @@ class _EnquiryState extends State<EnquiryUNI> {
     Seeds(id: 27, name: "Lactimo"),
     Seeds(id: 28, name: "Betimo"),
     Seeds(id: 29, name: "Laurena"),
+    Seeds(id: 30, name: "Avatar Pasture Pack"),
+    Seeds(id: 31, name: "Matrix Pasture Pack"),
+    Seeds(id: 32, name: "Ultra & Avatar Pasture Pack"),
   ];
   var _cultivars = _Seeds
       .map((product) => MultiSelectItem<Seeds>(product, product.name))
@@ -91,43 +91,9 @@ class _EnquiryState extends State<EnquiryUNI> {
 
   String farmtype = 'Dairy';
   String retailer = 'Ravensdown';
-  String product1 = '';
-  String product2 = '';
-  String product3 = '';
-  String product4 = '';
-  String product5 = '';
   String seedmixed = 'YES';
   String seedtreatment = 'YES';
-  var _productlist = ['',
-    'Ultra AR1 diploid perennial ryegrass',
-    'Matrix SE  diploid perennial ryegrass',
-    'Raider NEA2  diploid perennial ryegrass',
-    'Avatar NEA tetraploid perennial ryegrass',
-    'Kai  tetraploid perennial ryegrass',
-    'Barrier U2 Festulolium grass',
-    'Kainui cocksfoot',
-    'Vision cocksfoot',
-    'Appeal diploid Italian ryegrass',
-    'Sonik diploid Italian ryegrass',
-    'Vibe diploid Italian ryegrass',
-    'Blade diploid Italian ryegrass',
-    'Bullet tetraploid annual ryegrass',
-    'Dash tetraploid annual ryegrass ',
-    'Zoom tetraploid annual ryegrass',
-    'Mantra white clover',
-    'Demand white clover',
-    'Reaper red clover',
-    'Galaxie Max lucerne',
-    'Chico chicory',
-    'Oracle plantain',
-    'Coleor kale',
-    'Proteor kale',
-    'Pillar rape',
-    'Marco turnip',
-    'Geronimo fodder beet',
-    'Lactimo fodder beet',
-    'Betimo fodder beet',
-    'Laurena fodder beet',];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -166,17 +132,19 @@ class _EnquiryState extends State<EnquiryUNI> {
                     ),
 
                     Container(
+
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: customerController,
                         validator: (value) {
                           if (value.isEmpty) {
-                            return "please Enter your name";
+                            return "please Enter your name (required)";
                           }
                         },
                         decoration: InputDecoration(
+
                             focusedBorder: OutlineInputBorder(
                               borderSide:
                               BorderSide(color: Colors.red, width: 2.0),
@@ -184,17 +152,19 @@ class _EnquiryState extends State<EnquiryUNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Customer Name *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   width: 2.0,
                                 ))),
+
                       ),
                     ),
 
@@ -203,7 +173,7 @@ class _EnquiryState extends State<EnquiryUNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: addressController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -211,6 +181,7 @@ class _EnquiryState extends State<EnquiryUNI> {
                           }
                         },
                         decoration: InputDecoration(
+
                             focusedBorder: OutlineInputBorder(
                               borderSide:
                               BorderSide(color: Colors.red, width: 2.0),
@@ -218,12 +189,13 @@ class _EnquiryState extends State<EnquiryUNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Postal Address *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -237,7 +209,7 @@ class _EnquiryState extends State<EnquiryUNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: phoneController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -252,12 +224,13 @@ class _EnquiryState extends State<EnquiryUNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Phone Number *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -271,7 +244,7 @@ class _EnquiryState extends State<EnquiryUNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: emailController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -290,12 +263,13 @@ class _EnquiryState extends State<EnquiryUNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter your email address *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -309,7 +283,7 @@ class _EnquiryState extends State<EnquiryUNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: paddockController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -324,12 +298,13 @@ class _EnquiryState extends State<EnquiryUNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Paddock Area (ha) *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -355,11 +330,12 @@ class _EnquiryState extends State<EnquiryUNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: farmtype,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
                           setState(() {
                             farmtype = newValue1;
@@ -392,7 +368,7 @@ class _EnquiryState extends State<EnquiryUNI> {
                     // preferred retailer container
                     Container(
                       height: 50,
-                      margin: EdgeInsets.fromLTRB(50, 10, 50, 0),
+                      margin: EdgeInsets.fromLTRB(50, 10, 50, 30),
                       decoration: BoxDecoration(
                         color: Colors.lightGreen[600],
                         borderRadius: BorderRadius.circular(15.0),
@@ -402,11 +378,12 @@ class _EnquiryState extends State<EnquiryUNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: retailer,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue) {
                           setState(() {
                             retailer = newValue;
@@ -430,27 +407,25 @@ class _EnquiryState extends State<EnquiryUNI> {
                     ),
 
                     Container(
-                      margin: EdgeInsets.fromLTRB(10, 30, 10, 0),
+                      margin: EdgeInsets.fromLTRB(50, 20, 50, 0),
                       child: Text('select products, then click proceed:'),
                     ),
 
-// add multi select product button here
                     Container(
                       alignment: Alignment.center,
-                      padding: EdgeInsets.all(20),
+                      padding: EdgeInsets.fromLTRB(50,0,50,0),
                       child: Column(
                         children: <Widget>[
                           SizedBox(height: 40),
-                          //################################################################################################
-                          // Rounded blue MultiSelectDialogField
-                          //################################################################################################
+
                           MultiSelectDialogField(
                             items: _cultivars,
-                            title: Text("Products"),
-                            selectedColor: Colors.green,
+                            title: Text("Scroll down to see and select products"),
+                            backgroundColor: Colors.lightGreen,
+                            selectedColor: Colors.black,
                             decoration: BoxDecoration(
                               color: Colors.lightGreen[600],
-                              borderRadius: BorderRadius.all(Radius.circular(40)),
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
                               border: Border.all(
                                 color: Colors.red[700],
                                 width: 2,
@@ -494,11 +469,12 @@ class _EnquiryState extends State<EnquiryUNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: seedmixed,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
                           setState(() {
                             seedmixed = newValue1;
@@ -533,11 +509,12 @@ class _EnquiryState extends State<EnquiryUNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: seedtreatment,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
                           setState(() {
                             seedtreatment = newValue1;
@@ -587,32 +564,13 @@ class _EnquiryState extends State<EnquiryUNI> {
     var _farmtype = farmtype;
     var _paddockText = paddockController.text;
     var _retailer = retailer;
-    var _product1 = product1;
-    var _product2 = product2;
-    var _product3 = product3;
-    var _product4 = product4;
-    var _product5 = product5;
     var _seedmixed = seedmixed;
     var _seedtreatment = seedtreatment;
 
-    // Joels Testing
     var _selectedProducts = _selectedSeeds1
         .map((product) => product.name)
         .toList()
         .join(", ");
-
-    //print(_selectedProducts);
-
-    // .map((product) => MultiSelectItem<Seeds>(product, product.name))
-
-
-    //_cultivars.map((i) => a[a.id] - 1]).toList();
-    // debugPrint(_selectedProducts[0]);
-    // var _selectedProducts = _cultivars
-    //     .map((product) => (product, product.name))
-    //     .toList();
-    //List<Product> _selectedSeeds = [];
-    //List<Seeds>_selectedProducts = _cultivars;
 
     final _multiSelectKey = GlobalKey<FormFieldState>();
 
@@ -633,12 +591,8 @@ class _EnquiryState extends State<EnquiryUNI> {
         '$_retailer\n\n'
         'Seed Products:\n  '
         //'------ Products ------\n'
-        '$_selectedProducts\n  '
-        // '$_product1\n  '
-        // '$_product2\n  '
-        // '$_product3\n  '
-        // '$_product4\n  '
-        // '$_product5\n\n'
+        '$_selectedProducts\n\n\n'
+
         'Seed to be mixed:  '
         '$_seedmixed\n\n'
         'Seed to be treated:  '
@@ -659,6 +613,9 @@ class _EnquiryState extends State<EnquiryUNI> {
           cc: [emailController.text],
         );
         send(email);
+      }
+      if(_selectedSeeds1.length == 32) {
+        _selectedSeeds1.clear();
       }
     });
     debugPrint('email - > $inputEmail  message -> $inputMessage');
