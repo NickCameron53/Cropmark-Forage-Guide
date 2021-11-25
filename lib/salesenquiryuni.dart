@@ -35,7 +35,7 @@ class _EnquiryState extends State<EnquiryUNI> {
     Seeds(id: 3, name: "Ultra & Avatar Pasture Pack"),
     Seeds(id: 4, name: "Ultra diploid perennial ryegrass"),
     Seeds(id: 5, name: "Matrix diploid perennial ryegrass "),
-    Seeds(id: 6, name: "Raider tetraploid perennial ryegrass"),
+    Seeds(id: 6, name: "Raider diploid perennial ryegrass"),
     Seeds(id: 7, name: "Avatar tetraploid perennial ryegrass"),
     Seeds(id: 8, name: "Kai tetraploid perennial ryegrass"),
     Seeds(id: 9, name: "Barrier festulolium perennial grass"),
