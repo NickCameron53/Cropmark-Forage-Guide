@@ -4,7 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/rendering.dart';
 import 'main.dart';
 import 'package:flutter/widgets.dart';
+import 'package:multi_select_flutter/multi_select_flutter.dart';
 
+class Seeds {
+  final int id;
+  final String name;
+
+  Seeds({
+    this.id,
+    this.name,
+  });
+}
 
 class EnquiryLNI extends StatefulWidget {
   EnquiryLNI({Key key, this.title}) : super(key: key);
@@ -18,6 +28,61 @@ class EnquiryLNI extends StatefulWidget {
 }
 
 class _EnquiryState extends State<EnquiryLNI> {
+
+  static List<Seeds> _Seeds = [
+    Seeds(id: 1, name: "Avatar Pasture Pack"),
+    Seeds(id: 2, name: "Matrix Pasture Pack"),
+    Seeds(id: 3, name: "Ultra & Avatar Pasture Pack"),
+    Seeds(id: 4, name: "Ultra diploid perennial ryegrass"),
+    Seeds(id: 5, name: "Matrix diploid perennial ryegrass "),
+    Seeds(id: 6, name: "Raider tetraploid perennial ryegrass"),
+    Seeds(id: 7, name: "Avatar tetraploid perennial ryegrass"),
+    Seeds(id: 8, name: "Kai tetraploid perennial ryegrass"),
+    Seeds(id: 9, name: "Barrier festulolium perennial grass"),
+    Seeds(id: 10, name: "Kainui cocksfoot"),
+    Seeds(id: 11, name: "Vision cocksfoot"),
+    Seeds(id: 12, name: "Appeal diploid Italian ryegrass"),
+    Seeds(id: 13, name: "Sonik diploid Italian ryegrass"),
+    Seeds(id: 14, name: "Vibe diploid Italian ryegrass"),
+    Seeds(id: 15, name: "Blade diploid Italian ryegrass"),
+    Seeds(id: 16, name: "Bullet tetraploid annual ryegrass"),
+    Seeds(id: 17, name: "Dash tetraploid annual ryegrass"),
+    Seeds(id: 18, name: "Zoom tetraploid annual ryegrass"),
+    Seeds(id: 19, name: "Mantra white clover"),
+    Seeds(id: 20, name: "Demand white clover"),
+    Seeds(id: 21, name: "Reaper red clover"),
+    Seeds(id: 22, name: "Galaxie Max lucerne"),
+    Seeds(id: 23, name: "Chico chicory"),
+    Seeds(id: 24, name: "Oracle plantain"),
+    Seeds(id: 25, name: "Coleor kale"),
+    Seeds(id: 26, name: "Proteor kale"),
+    Seeds(id: 27, name: "Pillar rape"),
+    Seeds(id: 28, name: "Marco turnip"),
+    Seeds(id: 29, name: "Geronimo fodder beet"),
+    Seeds(id: 30, name: "Lactimo fodder beet"),
+    Seeds(id: 31, name: "Betimo fodder beet"),
+    Seeds(id: 32, name: "Laurena fodder beet"),
+
+  ];
+  var _cultivars = _Seeds
+      .map((product) => MultiSelectItem<Seeds>(product, product.name))
+      .toList();
+
+  //List<Product> _selectedSeeds = [];
+
+  //final List<String> _cultivars = _Seeds.map((product) => product.name).toList();
+  List<Seeds>_selectedSeeds1 = [];
+
+  final _multiSelectKey = GlobalKey<FormFieldState>();
+
+  @override
+  void initState() {
+    _selectedSeeds1 = _Seeds;
+    super.initState();
+  }
+
+  @override
+
   final _emailFormKey = GlobalKey<FormState>();
   final TextEditingController customerController = new TextEditingController();
   final TextEditingController addressController = new TextEditingController();
@@ -27,47 +92,9 @@ class _EnquiryState extends State<EnquiryLNI> {
 
   String farmtype = 'Dairy';
   String retailer = 'Ravensdown';
-  String product1 = '';
-  String product2 = '';
-  String product3 = '';
-  String product4 = '';
-  String product5 = '';
   String seedmixed = 'YES';
   String seedtreatment = 'YES';
-  var _productlist = ['',
-    'Matrix Pasture Pack',
-    'Avatar Pasture Pack',
-    'Ultra/Avatar Pasture Pack',
-    'Ultra AR1 diploid perennial ryegrass',
-    'Matrix SE  diploid perennial ryegrass',
-    'Matrix Nil  diploid perennial ryegrass',
-    'Raider NEA2  diploid perennial ryegrass',
-    'Avatar NEA tetraploid perennial ryegrass',
-    'Kai  tetraploid perennial ryegrass',
-    'Barrier U2 Festulolium grass',
-    'Kainui cocksfoot',
-    'Vision cocksfoot',
-    'Appeal diploid Italian ryegrass',
-    'Sonik diploid Italian ryegrass',
-    'Vibe diploid Italian ryegrass',
-    'Blade diploid Italian ryegrass',
-    'Bullet tetraploid annual ryegrass',
-    'Dash tetraploid annual ryegrass ',
-    'Zoom tetraploid annual ryegrass',
-    'Mantra white clover',
-    'Demand white clover',
-    'Reaper red clover',
-    'Galaxie Max lucerne',
-    'Chico chicory',
-    'Oracle plantain',
-    'Coleor kale',
-    'Proteor kale',
-    'Pillar rape',
-    'Marco turnip',
-    'Geronimo fodder beet',
-    'Lactimo fodder beet',
-    'Betimo fodder beet',
-    'Laurena fodder beet',];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -106,17 +133,19 @@ class _EnquiryState extends State<EnquiryLNI> {
                     ),
 
                     Container(
+
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: customerController,
                         validator: (value) {
                           if (value.isEmpty) {
-                            return "please Enter your name";
+                            return "please Enter your name (required)";
                           }
                         },
                         decoration: InputDecoration(
+
                             focusedBorder: OutlineInputBorder(
                               borderSide:
                               BorderSide(color: Colors.red, width: 2.0),
@@ -124,17 +153,19 @@ class _EnquiryState extends State<EnquiryLNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Customer Name *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   width: 2.0,
                                 ))),
+
                       ),
                     ),
 
@@ -143,7 +174,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: addressController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -151,6 +182,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                           }
                         },
                         decoration: InputDecoration(
+
                             focusedBorder: OutlineInputBorder(
                               borderSide:
                               BorderSide(color: Colors.red, width: 2.0),
@@ -158,12 +190,13 @@ class _EnquiryState extends State<EnquiryLNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Postal Address *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -177,7 +210,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: phoneController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -192,12 +225,13 @@ class _EnquiryState extends State<EnquiryLNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Phone Number *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -211,7 +245,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: emailController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -230,12 +264,13 @@ class _EnquiryState extends State<EnquiryLNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter your email address *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -249,7 +284,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                       margin:
                       EdgeInsets.fromLTRB(10,15,10,15),
                       child: TextFormField(
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(color: Colors.white),
                         controller: paddockController,
                         validator: (value) {
                           if (value.isEmpty) {
@@ -264,12 +299,13 @@ class _EnquiryState extends State<EnquiryLNI> {
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderSide: BorderSide(
-                                  color: Colors.lightGreen[600], width: 2.0),
+                                  color: Colors.red, width: 2.0),
                               borderRadius: BorderRadius.circular(15),
                             ),
                             fillColor: Colors.lightGreen[600],
                             filled: true,
                             labelText: "Enter Paddock Area (ha) *",
+                            labelStyle: TextStyle(color: Colors.white),
                             border: OutlineInputBorder(
                                 borderSide: BorderSide(
                                   color: Colors.black,
@@ -295,11 +331,12 @@ class _EnquiryState extends State<EnquiryLNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: farmtype,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
                           setState(() {
                             farmtype = newValue1;
@@ -332,7 +369,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                     // preferred retailer container
                     Container(
                       height: 50,
-                      margin: EdgeInsets.fromLTRB(50, 10, 50, 0),
+                      margin: EdgeInsets.fromLTRB(50, 10, 50, 30),
                       decoration: BoxDecoration(
                         color: Colors.lightGreen[600],
                         borderRadius: BorderRadius.circular(15.0),
@@ -342,11 +379,12 @@ class _EnquiryState extends State<EnquiryLNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: retailer,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue) {
                           setState(() {
                             retailer = newValue;
@@ -363,6 +401,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                           'Smart Forage and Pasture Solutions',
                           'Ruapehu Farm Supplies',
                           'Tod Seeds',
+
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,
@@ -373,169 +412,50 @@ class _EnquiryState extends State<EnquiryLNI> {
                     ),
 
                     Container(
-                      margin: EdgeInsets.fromLTRB(10, 30, 10, 0),
+                      margin: EdgeInsets.fromLTRB(50, 20, 50, 0),
                       child: Text('select products, then click proceed:'),
                     ),
 
-// product1 container
                     Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 10, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product1,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product1 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
+                      alignment: Alignment.center,
+                      padding: EdgeInsets.fromLTRB(50,0,50,0),
+                      child: Column(
+                        children: <Widget>[
+                          SizedBox(height: 40),
+
+                          MultiSelectDialogField(
+                            items: _cultivars,
+                            title: Text("Scroll down to see and select products"),
+                            backgroundColor: Colors.lightGreen,
+                            selectedColor: Colors.black,
+                            decoration: BoxDecoration(
+                              color: Colors.lightGreen[600],
+                              borderRadius: BorderRadius.all(Radius.circular(15)),
+                              border: Border.all(
+                                color: Colors.red[700],
+                                width: 2,
+                              ),
+                            ),
+
+                            buttonText: Text(
+                              "Select Products",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                              ),
+                            ),
+                            onConfirm: (results) {
+                              print(results);
+                              _selectedSeeds1 = results;
+
+                            },
+                          ),
+
+
+                        ],
                       ),
                     ),
 
-                    // product2 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product2,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product2 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-
-                    // product3 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product3,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product3 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-
-                    // product4 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product4,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product4 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
-
-                    // product5 container
-                    Container(
-                      height: 50,
-                      margin: EdgeInsets.fromLTRB(30, 20, 30, 0),
-                      decoration: BoxDecoration(
-                        color: Colors.lightGreen[600],
-                        borderRadius: BorderRadius.circular(15.0),
-                        border: Border.all(
-                            color: Colors.red,
-                            style: BorderStyle.solid,
-                            width: 1.80),
-                      ),
-                      child: DropdownButton<String>(
-                        value: product5,
-                        icon: const Icon(Icons.arrow_downward),
-                        iconSize: 24,
-                        elevation: 16,
-                        style: const TextStyle(color: Colors.black),
-                        onChanged: (String newValue1) {
-                          setState(() {
-                            product5 = newValue1;
-                          });
-                        },
-                        items: _productlist.map<DropdownMenuItem<String>>((String value1) {
-                          return DropdownMenuItem<String>(
-                            value: value1,
-                            child: Text(value1),
-                          );
-                        }).toList(),
-                      ),
-                    ),
 
                     Container(
                       margin: EdgeInsets.fromLTRB(100, 30, 100, 0),
@@ -554,11 +474,12 @@ class _EnquiryState extends State<EnquiryLNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: seedmixed,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
                           setState(() {
                             seedmixed = newValue1;
@@ -593,11 +514,12 @@ class _EnquiryState extends State<EnquiryLNI> {
                             width: 1.80),
                       ),
                       child: DropdownButton<String>(
+                        dropdownColor: Colors.lightGreen,
                         value: seedtreatment,
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
-                        style: const TextStyle(color: Colors.black),
+                        style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
                           setState(() {
                             seedtreatment = newValue1;
@@ -616,14 +538,9 @@ class _EnquiryState extends State<EnquiryLNI> {
                     ),
 
                     Container(
-                      margin: EdgeInsets.fromLTRB(100, 20, 100, 20),
+                      margin: EdgeInsets.fromLTRB(100, 30, 100, 20),
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.grey[500],
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                          ),
+
                           child: Text("Proceed"),
                           onPressed: () {
                             if (_emailFormKey.currentState.validate()) {
@@ -647,13 +564,16 @@ class _EnquiryState extends State<EnquiryLNI> {
     var _farmtype = farmtype;
     var _paddockText = paddockController.text;
     var _retailer = retailer;
-    var _product1 = product1;
-    var _product2 = product2;
-    var _product3 = product3;
-    var _product4 = product4;
-    var _product5 = product5;
     var _seedmixed = seedmixed;
     var _seedtreatment = seedtreatment;
+
+    var _selectedProducts = _selectedSeeds1
+        .map((product) => product.name)
+        .toList()
+        .join(", ");
+
+    final _multiSelectKey = GlobalKey<FormFieldState>();
+
 
     var inputMessage = 'Name:  '
         '$_nameText\n\n'
@@ -670,11 +590,9 @@ class _EnquiryState extends State<EnquiryLNI> {
         'Preferred Retailer:\n  '
         '$_retailer\n\n'
         'Seed Products:\n  '
-        '$_product1\n  '
-        '$_product2\n  '
-        '$_product3\n  '
-        '$_product4\n  '
-        '$_product5\n\n'
+    //'------ Products ------\n'
+        '$_selectedProducts\n\n\n'
+
         'Seed to be mixed:  '
         '$_seedmixed\n\n'
         'Seed to be treated:  '
@@ -695,6 +613,9 @@ class _EnquiryState extends State<EnquiryLNI> {
           cc: [emailController.text],
         );
         send(email);
+      }
+      if(_selectedSeeds1.length == 32) {
+        _selectedSeeds1.clear();
       }
     });
     debugPrint('email - > $inputEmail  message -> $inputMessage');

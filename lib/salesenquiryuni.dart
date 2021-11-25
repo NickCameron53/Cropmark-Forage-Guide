@@ -30,38 +30,39 @@ class EnquiryUNI extends StatefulWidget {
 class _EnquiryState extends State<EnquiryUNI> {
 
   static List<Seeds> _Seeds = [
-    Seeds(id: 1, name: "Ultra"),
-    Seeds(id: 2, name: "Matrix"),
-    Seeds(id: 3, name: "Raider"),
-    Seeds(id: 4, name: "Avatar"),
-    Seeds(id: 5, name: "Kai"),
-    Seeds(id: 6, name: "Barrier"),
-    Seeds(id: 7, name: "Kainui"),
-    Seeds(id: 8, name: "Vision"),
-    Seeds(id: 9, name: "Appeal"),
-    Seeds(id: 10, name: "Sonik"),
-    Seeds(id: 11, name: "Vibe"),
-    Seeds(id: 12, name: "Blade"),
-    Seeds(id: 13, name: "Bullet"),
-    Seeds(id: 14, name: "Dash"),
-    Seeds(id: 15, name: "Zoom"),
-    Seeds(id: 16, name: "Mantra"),
-    Seeds(id: 17, name: "Demand"),
-    Seeds(id: 18, name: "Reaper"),
-    Seeds(id: 19, name: "Galaxie Max"),
-    Seeds(id: 20, name: "Chico"),
-    Seeds(id: 21, name: "Oracle"),
-    Seeds(id: 22, name: "Coleor"),
-    Seeds(id: 23, name: "Proteor"),
-    Seeds(id: 24, name: "Pillar"),
-    Seeds(id: 25, name: "Marco"),
-    Seeds(id: 26, name: "Geronimo"),
-    Seeds(id: 27, name: "Lactimo"),
-    Seeds(id: 28, name: "Betimo"),
-    Seeds(id: 29, name: "Laurena"),
-    Seeds(id: 30, name: "Avatar Pasture Pack"),
-    Seeds(id: 31, name: "Matrix Pasture Pack"),
-    Seeds(id: 32, name: "Ultra & Avatar Pasture Pack"),
+    Seeds(id: 1, name: "Avatar Pasture Pack"),
+    Seeds(id: 2, name: "Matrix Pasture Pack"),
+    Seeds(id: 3, name: "Ultra & Avatar Pasture Pack"),
+    Seeds(id: 4, name: "Ultra diploid perennial ryegrass"),
+    Seeds(id: 5, name: "Matrix diploid perennial ryegrass "),
+    Seeds(id: 6, name: "Raider tetraploid perennial ryegrass"),
+    Seeds(id: 7, name: "Avatar tetraploid perennial ryegrass"),
+    Seeds(id: 8, name: "Kai tetraploid perennial ryegrass"),
+    Seeds(id: 9, name: "Barrier festulolium perennial grass"),
+    Seeds(id: 10, name: "Kainui cocksfoot"),
+    Seeds(id: 11, name: "Vision cocksfoot"),
+    Seeds(id: 12, name: "Appeal diploid Italian ryegrass"),
+    Seeds(id: 13, name: "Sonik diploid Italian ryegrass"),
+    Seeds(id: 14, name: "Vibe diploid Italian ryegrass"),
+    Seeds(id: 15, name: "Blade diploid Italian ryegrass"),
+    Seeds(id: 16, name: "Bullet tetraploid annual ryegrass"),
+    Seeds(id: 17, name: "Dash tetraploid annual ryegrass"),
+    Seeds(id: 18, name: "Zoom tetraploid annual ryegrass"),
+    Seeds(id: 19, name: "Mantra white clover"),
+    Seeds(id: 20, name: "Demand white clover"),
+    Seeds(id: 21, name: "Reaper red clover"),
+    Seeds(id: 22, name: "Galaxie Max lucerne"),
+    Seeds(id: 23, name: "Chico chicory"),
+    Seeds(id: 24, name: "Oracle plantain"),
+    Seeds(id: 25, name: "Coleor kale"),
+    Seeds(id: 26, name: "Proteor kale"),
+    Seeds(id: 27, name: "Pillar rape"),
+    Seeds(id: 28, name: "Marco turnip"),
+    Seeds(id: 29, name: "Geronimo fodder beet"),
+    Seeds(id: 30, name: "Lactimo fodder beet"),
+    Seeds(id: 31, name: "Betimo fodder beet"),
+    Seeds(id: 32, name: "Laurena fodder beet"),
+
   ];
   var _cultivars = _Seeds
       .map((product) => MultiSelectItem<Seeds>(product, product.name))
@@ -533,14 +534,9 @@ class _EnquiryState extends State<EnquiryUNI> {
                     ),
 
                     Container(
-                      margin: EdgeInsets.fromLTRB(100, 20, 100, 20),
+                      margin: EdgeInsets.fromLTRB(100, 30, 100, 20),
                       child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.grey[500],
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30.0),
-                            ),
-                          ),
+
                           child: Text("Proceed"),
                           onPressed: () {
                             if (_emailFormKey.currentState.validate()) {
