@@ -394,10 +394,15 @@ class _EnquiryState extends State<EnquiryUNI> {
                           '',
                           'Ravensdown',
                           'Farmlands',
-                          'PGG Wrightson',
-                          'Smart Forage and Pasture Solutions',
+                          'Farm Source',
+                          'PGGW Rural',
+                          'Hodder & Taylors Ltd',
+                          'Hazlett Rural Ltd (North Island)',
+                          'Tod Seeds Ltd',
+                          'Ruapehu Farm Supplies Ltd',
+                          'Agri Plus Ltd',
                           'Northland Seed & Supplies',
-                          'New Zealand Farm Source',
+
                           ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
                             value: value,

@@ -381,6 +381,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                       child: DropdownButton<String>(
                         dropdownColor: Colors.lightGreen,
                         value: retailer,
+
                         icon: const Icon(Icons.arrow_downward),
                         iconSize: 24,
                         elevation: 16,
@@ -390,17 +391,19 @@ class _EnquiryState extends State<EnquiryLNI> {
                             retailer = newValue;
                           });
                         },
+
                         items: <String>[
                           '',
                           'Ravensdown',
                           'Farmlands',
-                          'PGG Wrightson',
-                          'New Zealand Farm Source',
-                          'H&T Agronomics',
-                          'Seeds and Cereals Ltd',
-                          'Smart Forage and Pasture Solutions',
-                          'Ruapehu Farm Supplies',
-                          'Tod Seeds',
+                          'Farm Source',
+                          'PGGW Rural',
+                          'Hodder & Taylors Ltd',
+                          'Hazlett Rural Ltd (North Island)',
+                          'Tod Seeds Ltd',
+                          'Ruapehu Farm Supplies Ltd',
+                          'Agri Plus Ltd',
+                          'Northland Seed & Supplies',
 
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
@@ -408,6 +411,7 @@ class _EnquiryState extends State<EnquiryLNI> {
                             child: Text(value),
                           );
                         }).toList(),
+
                       ),
                     ),
 

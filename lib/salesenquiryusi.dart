@@ -393,19 +393,19 @@ class _EnquiryState extends State<EnquiryUSI> {
                         items: <String>[
                           '',
                           'Ravensdown',
-                          'Farmlands',
-                          'PGG Wrightson',
                           'Wholesale Seeds',
-                          'New Zealand Farm Source',
+                          'Farmlands',
+                          'Farm Source',
+                          'PGGW Rural',
                           'Ruralco',
-                          'North Otago Pastoral Services',
-                          'Cates Grain & Seed',
                           'Luisetti Seeds',
-                          'Stapletons',
-                          'Carrfields',
-                          'Turnbull Grain & Seed',
-                          'Hazlett Rural',
                           'Specialty Seeds',
+                          'Cates Grain & Seed',
+                          'Hazlett Rural',
+                          'Carrfields',
+                          'Frame Grain and Seed',
+                          'Kiwi Seed',
+                          'Osgro',
 
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
