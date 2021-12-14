@@ -316,7 +316,7 @@ class _EnquiryState extends State<EnquiryLNI> {
 
                     Container(
                       margin: EdgeInsets.fromLTRB(100, 30, 100, 0),
-                      child: Text('select farm type:'),
+                      child: Text('Select farm type:'),
                     ),
                     // farm type container
                     Container(
@@ -343,7 +343,6 @@ class _EnquiryState extends State<EnquiryLNI> {
                           });
                         },
                         items: <String>[
-                          '',
                           'Dairy',
                           'Sheep & Beef',
                           'Sheep',
@@ -363,8 +362,9 @@ class _EnquiryState extends State<EnquiryLNI> {
 
                     Container(
                       margin: EdgeInsets.fromLTRB(100, 30, 100, 0),
-                      child: Text('select a preferred retailer:'),
+                      child: Text('Select a preferred retailer:'),
                     ),
+
 
                     // preferred retailer container
                     Container(
@@ -393,7 +393,6 @@ class _EnquiryState extends State<EnquiryLNI> {
                         },
 
                         items: <String>[
-                          '',
                           'Ravensdown',
                           'Farmlands',
                           'Farm Source',
@@ -403,7 +402,6 @@ class _EnquiryState extends State<EnquiryLNI> {
                           'Tod Seeds Ltd',
                           'Ruapehu Farm Supplies Ltd',
                           'Agri Plus Ltd',
-                          'Northland Seed & Supplies',
 
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
@@ -417,7 +415,7 @@ class _EnquiryState extends State<EnquiryLNI> {
 
                     Container(
                       margin: EdgeInsets.fromLTRB(50, 20, 50, 0),
-                      child: Text('select products, then click proceed:'),
+                      child: Text('Select products, then click proceed:'),
                     ),
 
                     Container(

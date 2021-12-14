@@ -57,7 +57,35 @@ class oracle extends StatelessWidget {
               child: RichText(
                 text: TextSpan(
                   text:
-                  "Oracle is late heading, broad leafed plantain bred for high forage yields under grazing. Has very strong year-round growth, especially over the late spring, summer and autumn months. Has deep fibrous roots enabling good heat and drought tolerance. Oracle late heading plantain is most active from mid-spring through to Autumn, when quality feed is needed most for young stock growth and milk production. Oracle’s highly vegetative growth maintains quality long after most plantain’s have run to seed. Oracle shown below between October & November produced 3.4 tDM/ha @ 10.4 MJ ME vs a much-promoted competitors 2.7 tDM/ha @ ME 9.9 MJ ME. That's a whopping 35% advantage to Oracle in ME yield per ha at this key point of the year for lactation and liveweight gain.",
+                  "Oracle is late heading, broad leafed plantain bred for high forage yields under grazing. Has very strong year-round growth, especially over the late spring, summer and autumn months. Has deep fibrous roots enabling good heat and drought tolerance.",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+
+            Container(
+              padding: EdgeInsets.fromLTRB(10.0, 0.0, 3.0, 5.0),
+              child: RichText(
+                text: TextSpan(
+                  text:
+                  "Oracle late heading plantain is most active from mid-spring through to autumn, when quality feed is needed most for young stock growth and milk production. Oracle’s highly vegetative growth maintains quality long after most plantain’s have run to seed.",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
+
+            Container(
+              padding: EdgeInsets.fromLTRB(10.0, 0.0, 3.0, 5.0),
+              child: RichText(
+                text: TextSpan(
+                  text:
+                  "Oracle shown below between October & November produced 3.4 tDM/ha @ 10.4 MJ ME vs a much-promoted competitors 2.7 tDM/ha @ ME 9.9 MJ ME. That's a whopping 35% advantage to Oracle in ME yield per ha at this key point of the year for lactation and liveweight gain.",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
