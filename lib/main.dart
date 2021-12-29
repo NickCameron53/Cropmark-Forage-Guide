@@ -2,10 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'forageuni.dart';
-import 'foragelni.dart';
-import 'forageusi.dart';
-import 'foragelsi.dart';
+import 'forageregion.dart';
 
 
 void main() {
@@ -42,6 +39,8 @@ _makingPhoneCall() async {
 }
 
 class Home extends StatelessWidget {
+  String region, representative, phonenum, headshot ;
+
   @override
 
   Widget build(BuildContext context) {
@@ -107,25 +106,59 @@ class Home extends StatelessWidget {
             left: 0,
           ),
 
+         // container to hold button for the upper north island
+        Positioned(
+            child: Container(
+              child: IconButton(
+                  iconSize: 120,
+                  icon: const Icon(Icons.album_sharp),
+                  // 'Upper North Island',
+                  color: Colors.transparent,
+                  onPressed: () {
 
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => forageregion(
+                        region: 'Upper North Island',
+                        representative: 'James Bryan',
+                        headshot:'assets/James bryan headshot.png',
+                        phonenum: 'tel:0272354989',
+                      ),
+                      ),
+                    );
+                  }
+              ),
+            ),
+            bottom: 255,
+            left: 150,
+          ),
 
+          // 'Lower North Island container',
           Positioned(
             child: Container(
               child: IconButton(
-                  iconSize: 67.0,
+                  iconSize: 80,
                   icon: const Icon(Icons.album_sharp),
-                  // 'Lower South Island'
                   color: Colors.transparent,
                   onPressed: () {
-                    Navigator.of(context).push(
-
-                      MaterialPageRoute(builder: (context) => foragelsi(),),
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => forageregion(
+                        region: 'Lower North Island',
+                        representative: 'Matthew Kidby',
+                        headshot:'assets/Matt kidby headshot.png',
+                        phonenum: 'tel:0272301783',
+                      )
+                      ),
                     );
-                  }),
+                  }
+              ),
             ),
-            bottom: 30,
-            left: 23,
+            bottom: 175,
+            left: 150,
           ),
+
+         // 'Upper South Island container',
           Positioned(
             child: Container(
               child: IconButton(
@@ -136,48 +169,43 @@ class Home extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => forageusi()),
+                      MaterialPageRoute(builder: (context) => forageregion(
+                        region: 'Upper South Island',
+                        representative: 'Liam Martin',
+                        headshot:'assets/Liam headshot.png',
+                        phonenum: 'tel:0275556813',
+                      )),
                     );
                   }),
             ),
             bottom: 80,
             left: 60,
           ),
+
+           // 'Lower South Island container'
           Positioned(
             child: Container(
               child: IconButton(
-                  iconSize: 80,
+                  iconSize: 67.0,
                   icon: const Icon(Icons.album_sharp),
-                  // 'Lower North Island',
                   color: Colors.transparent,
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => foragelni()),
-                    );
+                    Navigator.of(context).push(
+
+                      MaterialPageRoute(builder: (context) => forageregion(
+                        region: 'Lower South Island',
+                        representative: 'Liam Martin',
+                        headshot:'assets/Liam headshot.png',
+                        phonenum: 'tel:0275556813',
+                        ),),
+                        );
                   }),
             ),
-            bottom: 175,
-            left: 150,
-          ),
-          Positioned(
-            child: Container(
-              child: IconButton(
-                  iconSize: 120,
-                  icon: const Icon(Icons.album_sharp),
-                  // 'Upper North Island',
-                  color: Colors.transparent,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => forageuni()),
-                    );
-                  }),
-            ),
-            bottom: 255,
-            left: 150,
+            bottom: 30,
+            left: 23,
           ),
 
+// cropmark logo
           Positioned(
             child: Container(
               child: Image.asset('assets/cropmarklogo.png'),

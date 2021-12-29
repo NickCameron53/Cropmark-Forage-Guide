@@ -10,41 +10,68 @@ import 'kai.dart';
 import 'barrieru2.dart';
 import 'kainui.dart';
 import 'vision.dart';
+import 'matrixnil.dart';
+import 'ultranil.dart';
+import 'raidernil.dart';
 
-_makingPhoneCall() async {
-  const url = 'tel:0272354989';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+class perennialgrass extends StatelessWidget {
+  final String region, representative, headshot, phonenum;
+
+
+  _makingPhoneCall() async {
+    if (await canLaunch(phonenum)) {
+      await launch(phonenum);
+    } else {
+      throw 'Could not launch $phonenum';
+    }
   }
-}
+  perennialgrass({Key key, @required
+  this.region,
+    this.representative,
+    this.headshot,
+    this.phonenum,
+  }) : super (key: key);
 
-void onSelected(BuildContext context, int item) {
+
+  void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Home()),
       );
+
       break;
-    case 1:
+    case 1: if(region != "Lower South Island")
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => ultraar1()),
       );
+    else Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => ultranil()),
+      );
       break;
-    case 2:
+    case 2: if(region != "Lower South Island")
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => matrixfe()),
       );
+    else Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => matrixnil()),
+      );
       break;
-    case 3:
+    case 3: if(region != "Lower South Island")
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => raidernea()),
       );
+    else Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => raidernil()),
+      );
+
       break;
     case 4:
       Navigator.push(
@@ -79,13 +106,13 @@ void onSelected(BuildContext context, int item) {
   }
 }
 
-class perennialgrassuni extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Upper N.I. perennial grass'),
+        title: Text("Perennial grass"),
         centerTitle: true,
         backgroundColor: Colors.red[700],
         actions: [
@@ -185,8 +212,8 @@ class perennialgrassuni extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(80.0, 2.0, 80.0, 0.0),
               child: ElevatedButton.icon(
                 onPressed: _makingPhoneCall,
-                icon: Icon(Icons.add_ic_call_sharp),
-                label: Text('call James Bryan'),
+                icon: Image.asset(headshot),
+                label: Text("call $representative"),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.grey[500],
                   side: BorderSide(width: 2.0,color: Colors.grey[500]),
@@ -222,6 +249,8 @@ class perennialgrassuni extends StatelessWidget {
               child: Image.asset('assets/diploidlp.png'),
             ),
 
+        //use feral endophyte varieties except for the lower S.I.
+        if (region != "Lower South Island") ...[
             Container(
               child: Align(
                 child: ElevatedButton(
@@ -254,7 +283,42 @@ class perennialgrassuni extends StatelessWidget {
                       );}),
               ),
             ),
+],
 
+if (region == "Lower South Island") ...[
+            Container(
+              child: Align(
+                child: ElevatedButton(
+                    child: Text('Ultra'),
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ultranil()),
+                      );}),
+              ),
+            ),
+
+            Container(
+              child: Align(
+                child: ElevatedButton(
+                    child: Text('Matrix'),
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => matrixnil()),
+                      );}),
+              ),
+            ),
+
+            Container(
+              child: Align(
+                child: ElevatedButton(
+                    child: Text('Raider'),
+                    onPressed: () {
+                      Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => raidernil()),
+                      );}),
+              ),
+            ),
+],
 
             Container(
               padding: EdgeInsets.fromLTRB(10.0, 40.0, 12.0, 2.0),

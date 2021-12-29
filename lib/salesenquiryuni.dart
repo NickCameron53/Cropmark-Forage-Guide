@@ -10,15 +10,21 @@ class Seeds {
   final int id;
   final String name;
 
+
   Seeds({
     this.id,
     this.name,
+
   });
 }
 
 class EnquiryUNI extends StatefulWidget {
-  EnquiryUNI({Key key, this.title}) : super(key: key);
-  final String title;
+  EnquiryUNI({Key key, @required
+    this.title,
+    this.region,
+
+  }) : super(key: key);
+  final String title, region ;
 
   @override
   State<StatefulWidget> createState() {
@@ -90,6 +96,8 @@ class _EnquiryState extends State<EnquiryUNI> {
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController paddockController = new TextEditingController();
 
+
+
   String farmtype = 'Dairy';
   String retailer = 'Ravensdown';
   String seedmixed = 'YES';
@@ -101,6 +109,7 @@ class _EnquiryState extends State<EnquiryUNI> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           title: Text('Sales Enquiry Upper N.I.'),
+
           centerTitle: true,
           backgroundColor: Colors.red[700],
           actions: <Widget>[
@@ -317,7 +326,10 @@ class _EnquiryState extends State<EnquiryUNI> {
                     Container(
                       margin: EdgeInsets.fromLTRB(100, 30, 100, 0),
                       child: Text('Select farm type:'),
+
                     ),
+
+
                     // farm type container
                     Container(
                       height: 50,
@@ -367,6 +379,7 @@ class _EnquiryState extends State<EnquiryUNI> {
 
 
                     // preferred retailer container
+
                     Container(
                       height: 50,
                       margin: EdgeInsets.fromLTRB(50, 10, 50, 30),
@@ -385,13 +398,10 @@ class _EnquiryState extends State<EnquiryUNI> {
                         iconSize: 24,
                         elevation: 16,
                         style: const TextStyle(color: Colors.white),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            retailer = newValue;
-                          });
-                        },
-                        items: <String>[
-                          'Ravensdown',
+
+
+                        items: <String> [
+                         'Ravensdown',
                           'Farmlands',
                           'Farm Source',
                           'PGGW Rural',
@@ -408,6 +418,13 @@ class _EnquiryState extends State<EnquiryUNI> {
                             child: Text(value),
                           );
                         }).toList(),
+
+                        onChanged: (String newValue) {
+                          setState(() {
+                            retailer = newValue;
+                          });
+                        },
+
                       ),
                     ),
 

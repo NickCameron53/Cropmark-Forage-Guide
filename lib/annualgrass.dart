@@ -5,17 +5,26 @@ import 'main.dart';
 import 'bullet.dart';
 import 'dash.dart';
 import 'zoom.dart';
+class annualgrass extends StatelessWidget {
+  final String region, representative, headshot, phonenum;
 
-_makingPhoneCall() async {
-  const url = 'tel:0272354989';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+
+  _makingPhoneCall() async {
+    if (await canLaunch(phonenum)) {
+      await launch(phonenum);
+    } else {
+      throw 'Could not launch $phonenum';
+    }
   }
-}
+  annualgrass({Key key, @required
+  this.region,
+    this.representative,
+    this.headshot,
+    this.phonenum,
+  }) : super (key: key);
 
-void onSelected(BuildContext context, int item) {
+
+  void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
       Navigator.push(
@@ -44,13 +53,13 @@ void onSelected(BuildContext context, int item) {
   }
 }
 
-class annualgrassuni extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Upper N.I. Annual ryegrass'),
+        title: Text('Annual ryegrass'),
         centerTitle: true,
         backgroundColor: Colors.red[700],
         actions: [
@@ -110,8 +119,8 @@ class annualgrassuni extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(80.0, 2.0, 80.0, 0.0),
               child: ElevatedButton.icon(
                 onPressed: _makingPhoneCall,
-                icon: Icon(Icons.add_ic_call_sharp),
-                label: Text('call James Bryan'),
+                icon: Image.asset(headshot),
+                label: Text("call $representative"),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.grey[500],
                     shape: RoundedRectangleBorder(
@@ -136,7 +145,7 @@ class annualgrassuni extends StatelessWidget {
               child: RichText(
                 text: TextSpan(
                   text:
-                      "Annual (Westerwolds) ryegrasses are used as a temporary cool season feed between crops and will produce seed from a spring sowing, generally persisting for only 6 to 8 months. Should be autumn sown. Sow at 25 to 30kg/hectare as sole grass species or 10 to 15 kg/hectare in a mixture.",
+                  "Annual (Westerwolds) ryegrasses are used as a temporary cool season feed between crops and will produce seed from a spring sowing, generally persisting for only 6 to 8 months. Should be autumn sown. Sow at 25 to 30kg/hectare as sole grass species or 10 to 15 kg/hectare in a mixture.",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,

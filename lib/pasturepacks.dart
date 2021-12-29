@@ -4,17 +4,25 @@ import 'package:url_launcher/url_launcher.dart';
 import 'main.dart';
 import 'ultraavatarpack.dart';
 import 'matrixpack.dart';
-import 'raidernea.dart';
 import 'avatarpack.dart';
 
+class pasturepacks extends StatelessWidget {
+  final String region, representative, headshot, phonenum;
+
+
 _makingPhoneCall() async {
-  const url = 'tel:0800427676';
-  if (await canLaunch(url)) {
-    await launch(url);
+   if (await canLaunch(phonenum)) {
+    await launch(phonenum);
   } else {
-    throw 'Could not launch $url';
+    throw 'Could not launch $phonenum';
   }
 }
+pasturepacks({Key key, @required
+this.region,
+this.representative,
+this.headshot,
+this.phonenum,
+}) : super (key: key);
 
 void onSelected(BuildContext context, int item) {
   switch (item) {
@@ -46,35 +54,18 @@ void onSelected(BuildContext context, int item) {
   }
 }
 
-class pasturepacks extends StatelessWidget {
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Column(
-        children:[
-          Text('Pasture Packs',
-        style: TextStyle (color: Colors.white, fontSize:22.0),
-        textAlign: TextAlign.center,
-      ),
-        Text(
-          'Call 0800427676 for assistance',
-          style: TextStyle (color: Colors.white, fontSize: 12.0),
-          textAlign: TextAlign.right,
-        ),
-        ],
-    ),
-
+        title: Text('Pasture Packs'),
+        centerTitle: true,
         backgroundColor: Colors.red[700],
         actions: [
-
-      IconButton(
-      icon: Icon(Icons.call),
-      onPressed: (_makingPhoneCall),
-    ),
-
-
 
     PopupMenuButton<int>(
             color: Colors.lightGreen[600],
@@ -129,9 +120,20 @@ class pasturepacks extends StatelessWidget {
           shrinkWrap: true,
           padding: EdgeInsets.all(0),
           children: <Widget>[
+            Container(
+              padding: EdgeInsets.fromLTRB(80.0, 2.0, 80.0, 0.0),
+              child: ElevatedButton.icon(
+                onPressed: _makingPhoneCall,
+                icon: Image.asset(headshot),
+                label: Text("call $representative"),
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.grey[500],
+                  side: BorderSide(width: 2.0,color: Colors.grey[500]),
+                ), ),
+            ),
 
             Container(
-              padding: EdgeInsets.fromLTRB(10.0, 0.0, 12.0, 2.0),
+              padding: EdgeInsets.fromLTRB(10.0, 40.0, 12.0, 2.0),
               child: RichText(
                 text: TextSpan(
                   text: "Pasture Packs",

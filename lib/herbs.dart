@@ -4,17 +4,26 @@ import 'package:url_launcher/url_launcher.dart';
 import 'main.dart';
 import 'chico.dart';
 import 'oracle.dart';
+class herbs extends StatelessWidget {
+  final String region, representative, headshot, phonenum;
 
-_makingPhoneCall() async {
-  const url = 'tel:0275556813';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+  _makingPhoneCall() async {
+    if (await canLaunch(phonenum)) {
+      await launch(phonenum);
+    } else {
+      throw 'Could not launch $phonenum';
+    }
   }
-}
+  herbs({Key key, @required
+  this.region,
+    this.representative,
+    this.headshot,
+    this.phonenum,
+  }) : super (key: key);
 
-void onSelected(BuildContext context, int item) {
+
+
+  void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
       Navigator.push(
@@ -37,13 +46,13 @@ void onSelected(BuildContext context, int item) {
   }
 }
 
-class herbslsi extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Lower S.I. herbs'),
+        title: Text('Herbs'),
         centerTitle: true,
         backgroundColor: Colors.red[700],
         actions: [
@@ -95,8 +104,8 @@ class herbslsi extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(80.0, 2.0, 80.0, 0.0),
               child: ElevatedButton.icon(
                 onPressed: _makingPhoneCall,
-                icon: Icon(Icons.add_ic_call_sharp),
-                label: Text('call Liam Martin'),
+                icon: Image.asset(headshot),
+                label: Text("call $representative"),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.grey[500],
                   side: BorderSide(width: 2.0,color: Colors.grey[500]),),

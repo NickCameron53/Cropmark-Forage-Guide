@@ -6,17 +6,27 @@ import 'appeal.dart';
 import 'sonik.dart';
 import 'vibe.dart';
 import 'blade.dart';
+class shorttermgrass extends StatelessWidget {
 
-_makingPhoneCall() async {
-  const url = 'tel:0275556813';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Could not launch $url';
+  final String region, representative, headshot, phonenum;
+
+
+  _makingPhoneCall() async {
+    if (await canLaunch(phonenum)) {
+      await launch(phonenum);
+    } else {
+      throw 'Could not launch $phonenum';
+    }
   }
-}
+  shorttermgrass({Key key, @required
+  this.region,
+    this.representative,
+    this.headshot,
+    this.phonenum,
+  }) : super (key: key);
 
-void onSelected(BuildContext context, int item) {
+
+  void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
       Navigator.push(
@@ -51,13 +61,13 @@ void onSelected(BuildContext context, int item) {
   }
 }
 
-class shorttermgrassusi extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Upper S.I. Short Term grass'),
+        title: Text('Short Term grass'),
         centerTitle: true,
         backgroundColor: Colors.red[700],
         actions: [
@@ -125,8 +135,8 @@ class shorttermgrassusi extends StatelessWidget {
               padding: EdgeInsets.fromLTRB(80.0, 2.0, 80.0, 0.0),
               child: ElevatedButton.icon(
                 onPressed: _makingPhoneCall,
-                icon: Icon(Icons.add_ic_call_sharp),
-                label: Text('call Liam Martin'),
+                icon: Image.asset(headshot),
+                label: Text("call $representative"),
                 style: ElevatedButton.styleFrom(
                     primary: Colors.grey[500],
                     shape: RoundedRectangleBorder(
@@ -151,7 +161,7 @@ class shorttermgrassusi extends StatelessWidget {
               child: RichText(
                 text: TextSpan(
                   text:
-                      "Italian ryegrass are usually erect shorter term ryegrasses producing very high winter and early spring yield of high quality. Italian ryegrasses require a winter period to form seed heads. Sow at 20 to 25kg/hectare as sole grass species or 8 to 10 kg/hectare in a mixture.",
+                  "Italian ryegrass are usually erect shorter term ryegrasses producing very high winter and early spring yield of high quality. Italian ryegrasses require a winter period to form seed heads. Sow at 20 to 25kg/hectare as sole grass species or 8 to 10 kg/hectare in a mixture.",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
