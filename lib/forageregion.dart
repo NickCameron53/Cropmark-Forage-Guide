@@ -1,11 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-import 'salesenquiryuni.dart';
-import 'salesenquirylni.dart';
-import 'salesenquiryusi.dart';
-import 'salesenquirylsi.dart';
+import 'salesenquiry.dart';
 import 'pasturepacks.dart';
 import 'perennialgrass.dart';
 import 'shorttermgrass.dart';
@@ -78,10 +74,13 @@ class forageregion extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EnquiryUNI()),
+                          builder: (context) => enquiry(
+                            region: 'Upper North Island',
+                          )),
                     );},
                 ),
               ),
+
               Container(
                 padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
                 child: ElevatedButton(
@@ -96,6 +95,7 @@ class forageregion extends StatelessWidget {
                           )),
                       );}),
               ),
+
               Container(
                 padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
                 child: ElevatedButton(
@@ -217,7 +217,9 @@ class forageregion extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EnquiryLNI()),
+                          builder: (context) => enquiry(
+                            region: 'Lower North Island',
+                          )),
                     );},
                 ),
               ),
@@ -355,7 +357,9 @@ class forageregion extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EnquiryUSI()),
+                          builder: (context) => enquiry(
+                            region: 'Upper South Island',
+                          )),
                     );},
 
                 ),
@@ -494,7 +498,9 @@ class forageregion extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => EnquiryLSI()),
+                          builder: (context) => enquiry(
+                            region: 'Lower South Island',
+                          )),
                     );},
 
                 ),

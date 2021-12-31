@@ -10,24 +10,24 @@ class Seeds {
   final int id;
   final String name;
 
+
   Seeds({
     this.id,
     this.name,
+
   });
 }
 
-class EnquiryLSI extends StatefulWidget {
-  EnquiryLSI({Key key, this.title}) : super(key: key);
-  final String title;
+class enquiry extends StatelessWidget {
+  final  String  title,  region ;
+  enquiry ({ Key key, @required
+  this.title,
+    this.region,
+}) : super(key: key);
+
 
   @override
-  State<StatefulWidget> createState() {
-    // TODO: implement createState
-    return _EnquiryState();
-  }
-}
 
-class _EnquiryState extends State<EnquiryLSI> {
 
   static List<Seeds> _Seeds = [
     Seeds(id: 1, name: "Avatar Pasture Pack"),
@@ -75,11 +75,6 @@ class _EnquiryState extends State<EnquiryLSI> {
 
   final _multiSelectKey = GlobalKey<FormFieldState>();
 
-  @override
-  void initState() {
-    _selectedSeeds1 = _Seeds;
-    super.initState();
-  }
 
   @override
 
@@ -89,6 +84,8 @@ class _EnquiryState extends State<EnquiryLSI> {
   final TextEditingController phoneController = new TextEditingController();
   final TextEditingController emailController = new TextEditingController();
   final TextEditingController paddockController = new TextEditingController();
+
+
 
   String farmtype = 'Dairy';
   String retailer = 'Ravensdown';
@@ -100,7 +97,8 @@ class _EnquiryState extends State<EnquiryLSI> {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          title: Text('Sales Enquiry Lower S.I.'),
+          title: Text('Sales Enquiry'),
+
           centerTitle: true,
           backgroundColor: Colors.red[700],
           actions: <Widget>[
@@ -317,7 +315,10 @@ class _EnquiryState extends State<EnquiryLSI> {
                     Container(
                       margin: EdgeInsets.fromLTRB(100, 30, 100, 0),
                       child: Text('Select farm type:'),
+
                     ),
+
+
                     // farm type container
                     Container(
                       height: 50,
@@ -338,10 +339,9 @@ class _EnquiryState extends State<EnquiryLSI> {
                         elevation: 16,
                         style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
-                          setState(() {
+
                             farmtype = newValue1;
-                          });
-                        },
+                          },
                         items: <String>[
                           'Dairy',
                           'Sheep & Beef',
@@ -365,13 +365,8 @@ class _EnquiryState extends State<EnquiryLSI> {
                       child: Text('Select a preferred retailer:'),
                     ),
 
-                    Text(
-                      'Scroll down to see all retailers',
-                      style: TextStyle(color: Colors.red, fontSize: 12.0),
-                      textAlign: TextAlign.center,
-                    ),
-
-                    // preferred retailer container
+                    // preferred retailer container for Upper NI
+                  if (region == 'Upper North Island') ...[
                     Container(
                       height: 50,
                       margin: EdgeInsets.fromLTRB(50, 10, 50, 30),
@@ -390,25 +385,17 @@ class _EnquiryState extends State<EnquiryLSI> {
                         iconSize: 24,
                         elevation: 16,
                         style: const TextStyle(color: Colors.white),
-                        onChanged: (String newValue) {
-                          setState(() {
-                            retailer = newValue;
-                          });
-                        },
-                        items: <String>[
+                        items: <String> [
                           'Ravensdown',
-                          'Catalyst Agronomy Services',
                           'Farmlands',
                           'Farm Source',
                           'PGGW Rural',
-                          'Ruralco',
-                          'Luisetti Seeds',
-                          'Carrfields',
-                          'Advance Agriculture',
-                          'Kubala Seeds',
-                          'North Otago Pastoral',
-                          'RB Rural',
-                          'H&T Agronomics',
+                          'Hodder & Taylors Ltd',
+                          'Hazlett Rural Ltd (North Island)',
+                          'Tod Seeds Ltd',
+                          'Ruapehu Farm Supplies Ltd',
+                          'Agri Plus Ltd',
+                          'Northland Seed & Supplies',
 
                         ].map<DropdownMenuItem<String>>((String value) {
                           return DropdownMenuItem<String>(
@@ -417,8 +404,159 @@ class _EnquiryState extends State<EnquiryLSI> {
                           );
                         }).toList(),
 
+                        onChanged: (String newValue) {
+                           {retailer = newValue;
+                          };
+                        },
                       ),
-                    ),
+                    ),],
+
+                    // preferred retailer container for Lower NI
+                    if (region == 'Lower North Island') ...[
+                      Container(
+                        height: 50,
+                        margin: EdgeInsets.fromLTRB(50, 10, 50, 30),
+                        decoration: BoxDecoration(
+                          color: Colors.lightGreen[600],
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(
+                              color: Colors.red,
+                              style: BorderStyle.solid,
+                              width: 1.80),
+                        ),
+                        child: DropdownButton<String>(
+                          dropdownColor: Colors.lightGreen,
+                          value: retailer,
+                          icon: const Icon(Icons.arrow_downward),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: const TextStyle(color: Colors.white),
+                          items: <String> [
+                            'Ravensdown',
+                            'Farmlands',
+                            'Farm Source',
+                            'PGGW Rural',
+                            'Hodder & Taylors Ltd',
+                            'Hazlett Rural Ltd (North Island)',
+                            'Tod Seeds Ltd',
+                            'Ruapehu Farm Supplies Ltd',
+                            'Agri Plus Ltd',
+
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+
+                          onChanged: (String newValue) {
+                            {retailer = newValue;
+                            };
+                          },
+                        ),
+                      ),],
+
+                    // preferred retailer container for Upper SI
+                    if (region == 'Upper South Island') ...[
+                      Container(
+                        height: 50,
+                        margin: EdgeInsets.fromLTRB(50, 10, 50, 30),
+                        decoration: BoxDecoration(
+                          color: Colors.lightGreen[600],
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(
+                              color: Colors.red,
+                              style: BorderStyle.solid,
+                              width: 1.80),
+                        ),
+                        child: DropdownButton<String>(
+                          dropdownColor: Colors.lightGreen,
+                          value: retailer,
+                          icon: const Icon(Icons.arrow_downward),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: const TextStyle(color: Colors.white),
+                          items: <String> [
+                            'Ravensdown',
+                            'Catalyst Agronomy Services',
+                            'Farmlands',
+                            'Farm Source',
+                            'PGGW Rural',
+                            'Ruralco',
+                            'Luisetti Seeds',
+                            'Specialty Seeds',
+                            'Cates Grain & Seed',
+                            'Hazlett Rural',
+                            'Carrfields',
+                            'Frame Grain and Seed',
+                            'Kiwi Seeds',
+                            'H&T Agronomics',
+                            'Turnbull Grain & Seed',
+
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+
+                          onChanged: (String newValue) {
+                            {retailer = newValue;
+                            };
+                          },
+                        ),
+                      ),],
+
+                    // preferred retailer container for Lower SI
+                    if (region == 'Lower South Island') ...[
+                      Container(
+                        height: 50,
+                        margin: EdgeInsets.fromLTRB(50, 10, 50, 30),
+                        decoration: BoxDecoration(
+                          color: Colors.lightGreen[600],
+                          borderRadius: BorderRadius.circular(15.0),
+                          border: Border.all(
+                              color: Colors.red,
+                              style: BorderStyle.solid,
+                              width: 1.80),
+                        ),
+                        child: DropdownButton<String>(
+                          dropdownColor: Colors.lightGreen,
+                          value: retailer,
+                          icon: const Icon(Icons.arrow_downward),
+                          iconSize: 24,
+                          elevation: 16,
+                          style: const TextStyle(color: Colors.white),
+                          items: <String> [
+                            'Ravensdown',
+                            'Catalyst Agronomy Services',
+                            'Farmlands',
+                            'Farm Source',
+                            'PGGW Rural',
+                            'Ruralco',
+                            'Luisetti Seeds',
+                            'Carrfields',
+                            'Advance Agriculture',
+                            'Kubala Seeds',
+                            'North Otago Pastoral',
+                            'RB Rural',
+                            'H&T Agronomics',
+
+                          ].map<DropdownMenuItem<String>>((String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          }).toList(),
+
+                          onChanged: (String newValue) {
+                            {retailer = newValue;
+                            };
+                          },
+                        ),
+                      ),],
+
+
 
                     Container(
                       margin: EdgeInsets.fromLTRB(50, 20, 50, 0),
@@ -434,7 +572,7 @@ class _EnquiryState extends State<EnquiryLSI> {
 
                           MultiSelectDialogField(
                             items: _cultivars,
-                            title: Text("scroll down to see and select products"),
+                            title: Text("Scroll down to see and select products"),
                             backgroundColor: Colors.lightGreen,
                             selectedColor: Colors.black,
                             decoration: BoxDecoration(
@@ -456,11 +594,8 @@ class _EnquiryState extends State<EnquiryLSI> {
                             onConfirm: (results) {
                               print(results);
                               _selectedSeeds1 = results;
-
                             },
                           ),
-
-
                         ],
                       ),
                     ),
@@ -490,9 +625,9 @@ class _EnquiryState extends State<EnquiryLSI> {
                         elevation: 16,
                         style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
-                          setState(() {
+                           {
                             seedmixed = newValue1;
-                          });
+                          };
                         },
                         items: <String>[
                           'YES',
@@ -530,9 +665,9 @@ class _EnquiryState extends State<EnquiryLSI> {
                         elevation: 16,
                         style: const TextStyle(color: Colors.white),
                         onChanged: (String newValue1) {
-                          setState(() {
+                           {
                             seedtreatment = newValue1;
-                          });
+                          };
                         },
                         items: <String>[
                           'YES',
@@ -610,7 +745,7 @@ class _EnquiryState extends State<EnquiryLSI> {
     String inputEmail;
 
     Email email;
-    setState(() {
+     {
       //   inputEmail = emailController.text;
       inputEmail = 'sales@cropmark.co.nz';
 
@@ -626,7 +761,7 @@ class _EnquiryState extends State<EnquiryLSI> {
       if(_selectedSeeds1.length == 32) {
         _selectedSeeds1.clear();
       }
-    });
+    };
     debugPrint('email - > $inputEmail  message -> $inputMessage');
   }
 
