@@ -2,29 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'main.dart';
-import 'ultraavatarpack.dart';
-import 'matrixpack.dart';
-import 'avatarpack.dart';
-
-class pasturepacks extends StatelessWidget {
+import 'bullet.dart';
+import 'dash.dart';
+import 'zoom.dart';
+class annualgrass extends StatelessWidget {
   final String region, representative, headshot, phonenum;
 
 
-_makingPhoneCall() async {
-   if (await canLaunch(phonenum)) {
-    await launch(phonenum);
-  } else {
-    throw 'Could not launch $phonenum';
+  _makingPhoneCall() async {
+    if (await canLaunch(phonenum)) {
+      await launch(phonenum);
+    } else {
+      throw 'Could not launch $phonenum';
+    }
   }
-}
-pasturepacks({Key key, @required
-this.region,
-this.representative,
-this.headshot,
-this.phonenum,
-}) : super (key: key);
+  annualgrass({Key key, @required
+  this.region,
+    this.representative,
+    this.headshot,
+    this.phonenum,
+  }) : super (key: key);
 
-void onSelected(BuildContext context, int item) {
+
+  void onSelected(BuildContext context, int item) {
   switch (item) {
     case 0:
       Navigator.push(
@@ -35,26 +35,23 @@ void onSelected(BuildContext context, int item) {
     case 1:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => avatarpack()),
+        MaterialPageRoute(builder: (context) => bullet()),
       );
       break;
     case 2:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => matrixpack()),
+        MaterialPageRoute(builder: (context) => dash()),
       );
       break;
     case 3:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ultraavatarpack()),
+        MaterialPageRoute(builder: (context) => zoom()),
       );
       break;
-
   }
 }
-
-
 
 
   @override
@@ -62,12 +59,11 @@ void onSelected(BuildContext context, int item) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('Pasture Packs'),
+        title: Text('Annual ryegrass'),
         centerTitle: true,
         backgroundColor: Colors.red[700],
         actions: [
-
-    PopupMenuButton<int>(
+          PopupMenuButton<int>(
             color: Colors.lightGreen[600],
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(15.0))),
@@ -89,7 +85,7 @@ void onSelected(BuildContext context, int item) {
               PopupMenuItem<int>(
                 value: 1,
                 child: Text(
-                  'Avatar Pasture Pack',
+                  'Bullet Annual ryegrass',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -97,7 +93,7 @@ void onSelected(BuildContext context, int item) {
               PopupMenuItem<int>(
                 value: 2,
                 child: Text(
-                  'Matrix Pasture Pack',
+                  'Dash Annual ryegrass',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -105,12 +101,11 @@ void onSelected(BuildContext context, int item) {
               PopupMenuItem<int>(
                 value: 3,
                 child: Text(
-                  'Ultra & Avatar Pasture Pack',
+                  'Zoom Annual ryegrass',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               PopupMenuDivider(),
-
             ],
           ),
         ],
@@ -127,16 +122,17 @@ void onSelected(BuildContext context, int item) {
                 icon: Image.asset(headshot),
                 label: Text("call $representative"),
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.grey[500],
-                  side: BorderSide(width: 2.0,color: Colors.grey[500]),
-                ), ),
+                    primary: Colors.grey[500],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    )),
+              ),
             ),
-
             Container(
               padding: EdgeInsets.fromLTRB(10.0, 40.0, 12.0, 2.0),
               child: RichText(
                 text: TextSpan(
-                  text: "Pasture Packs",
+                  text: "Tetraploid Annual ryegrass:",
                   style: TextStyle(
                       color: Colors.red[700],
                       fontSize: 20,
@@ -149,7 +145,7 @@ void onSelected(BuildContext context, int item) {
               child: RichText(
                 text: TextSpan(
                   text:
-                  "Pasture Packs come in 25 kg packs and are designed for different farming systems. They are pre-mixed with clover.",
+                  "Annual (Westerwolds) ryegrasses are used as a temporary cool season feed between crops and will produce seed from a spring sowing, generally persisting for only 6 to 8 months. Should be autumn sown. Sow at 25 to 30kg/hectare as sole grass species or 10 to 15 kg/hectare in a mixture.",
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 15,
@@ -158,49 +154,37 @@ void onSelected(BuildContext context, int item) {
               ),
             ),
             Container(
-              child: Image.asset('assets/ryeclover.png'),
+              child: Image.asset('assets/annualryegrasspic.png'),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
+              child: ElevatedButton(
+                  child: Text('Bullet'),
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => bullet()),
+                    );}),
             ),
 
             Container(
-              child: Align(
-                  child: ElevatedButton(
-                      child: Text('Avatar Pasture Pack'),
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => avatarpack()),
-                        );
-                      }),
-                ),
-              ),
-
-            Container(
-              child: Align(
-                child: ElevatedButton(
-                    child: Text('Matrix Pasture Pack'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => matrixpack()),
-                      );
-                    }),
-              ),
+              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
+              child: ElevatedButton(
+                  child: Text('Dash'),
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => dash()),
+                    );}),
             ),
 
             Container(
-              child: Align(
-                child: ElevatedButton(
-                    child: Text('Ultra & Avatar Pasture Pack'),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => ultraavatarpack()),
-                      );
-                    }),
-              ),
+              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
+              child: ElevatedButton(
+                  child: Text('Zoom'),
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => zoom()),
+                    );}),
             ),
-
-
           ],
         ),
       ),
