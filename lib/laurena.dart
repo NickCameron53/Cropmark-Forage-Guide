@@ -260,6 +260,19 @@ class laurena extends StatelessWidget {
                 ),
               ),
             ),
+
+            Container(
+              padding: EdgeInsets.fromLTRB(10.0, 0.0, 3.0, 0.0),
+              child: RichText(
+                text: TextSpan(
+                  text: "Downy mildew: can be susceptible.",
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                  ),
+                ),
+              ),
+            ),
             Container(
               padding: EdgeInsets.fromLTRB(10.0, 20.0, 12.0, 2.0),
               child: RichText(

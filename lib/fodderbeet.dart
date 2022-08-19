@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'main.dart';
+import 'gustea.dart';
+import 'laurena.dart';
+import 'dynamo.dart';
+import 'oe968.dart';
 import 'lactimo.dart';
 import 'geronimo.dart';
-import 'betimo.dart';
-import 'laurena.dart';
+
+
 class fodderbeet extends StatelessWidget {
   final String region, representative, headshot, phonenum;
 
@@ -37,25 +41,39 @@ class fodderbeet extends StatelessWidget {
     case 1:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => geronimo()),
+        MaterialPageRoute(builder: (context) => gustea()),
       );
       break;
     case 2:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => lactimo()),
+        MaterialPageRoute(builder: (context) => laurena()),
       );
       break;
     case 3:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => betimo()),
+        MaterialPageRoute(builder: (context) => dynamo()),
       );
       break;
     case 4:
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => laurena()),
+        MaterialPageRoute(builder: (context) => oe968()),
+      );
+      break;
+
+    case 5:
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => lactimo()),
+      );
+      break;
+
+    case 6:
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => geronimo()),
       );
       break;
   }
@@ -94,15 +112,16 @@ class fodderbeet extends StatelessWidget {
               PopupMenuItem<int>(
                 value: 1,
                 child: Text(
-                  'Geronimo fodder beet',
+                  'Gustea fodder beet',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               PopupMenuDivider(),
+
               PopupMenuItem<int>(
                 value: 2,
                 child: Text(
-                  'Lactimo fodder beet',
+                  'Laurena fodder beet',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -111,15 +130,34 @@ class fodderbeet extends StatelessWidget {
               PopupMenuItem<int>(
                 value: 3,
                 child: Text(
-                  'Betimo fodder beet',
+                  'Dynamo fodder beet',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               PopupMenuDivider(),
+
               PopupMenuItem<int>(
                 value: 4,
                 child: Text(
-                  'Laurena fodder beet',
+                  'OE968 fodder beet',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              PopupMenuDivider(),
+
+              PopupMenuItem<int>(
+                value: 5,
+                child: Text(
+                  'Lactimo fodder beet',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+              PopupMenuDivider(),
+
+              PopupMenuItem<int>(
+                value: 6,
+                child: Text(
+                  'Geronimo fodder beet',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -281,13 +319,42 @@ class fodderbeet extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
               child: ElevatedButton(
-                  child: Text('Geronimo'),
+                  child: Text('Gustea'),
                   onPressed: () {
                     Navigator.push(context,MaterialPageRoute(
-                        builder: (context) => geronimo()),
+                        builder: (context) => gustea()),
                     );}),
             ),
 
+            Container(
+              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
+              child: ElevatedButton(
+                  child: Text('Laurena'),
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => laurena()),
+                    );}),
+            ),
+
+            Container(
+              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
+              child: ElevatedButton(
+                  child: Text('Dynamo'),
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => dynamo()),
+                    );}),
+            ),
+
+            Container(
+              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
+              child: ElevatedButton(
+                  child: Text('OE968'),
+                  onPressed: () {
+                    Navigator.push(context,MaterialPageRoute(
+                        builder: (context) => oe968()),
+                    );}),
+            ),
 
             Container(
               padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
@@ -302,20 +369,10 @@ class fodderbeet extends StatelessWidget {
             Container(
               padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
               child: ElevatedButton(
-                  child: Text('Betimo'),
+                  child: Text('Geronimo'),
                   onPressed: () {
                     Navigator.push(context,MaterialPageRoute(
-                        builder: (context) => betimo()),
-                    );}),
-            ),
-
-            Container(
-              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
-              child: ElevatedButton(
-                  child: Text('Laurena'),
-                  onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(
-                        builder: (context) => laurena()),
+                        builder: (context) => geronimo()),
                     );}),
             ),
 

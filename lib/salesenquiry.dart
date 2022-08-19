@@ -58,10 +58,12 @@ class _EnquiryState extends State<Enquiry> {
     Seeds(id: 26, name: "Proteor kale"),
     Seeds(id: 27, name: "Pillar rape"),
     Seeds(id: 28, name: "Marco turnip"),
-    Seeds(id: 29, name: "Geronimo fodder beet"),
-    Seeds(id: 30, name: "Lactimo fodder beet"),
-    Seeds(id: 31, name: "Betimo fodder beet"),
-    Seeds(id: 32, name: "Laurena fodder beet"),
+    Seeds(id: 29, name: "Gustea fodder beet"),
+    Seeds(id: 30, name: "Laurena fodder beet"),
+    Seeds(id: 31, name: "Dynamo fodder beet"),
+    Seeds(id: 32, name: "OE968 fodder beet"),
+    Seeds(id: 33, name: "Lactimo fodder beet"),
+    Seeds(id: 34, name: "Geronimo fodder beet"),
 
   ];
   var _cultivars = _Seeds
