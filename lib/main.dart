@@ -194,9 +194,9 @@ class Home extends StatelessWidget {
 
                       MaterialPageRoute(builder: (context) => forageregion(
                         region: 'Lower South Island',
-                        representative: 'Liam Martin',
-                        headshot:'assets/Liam headshot.png',
-                        phonenum: 'tel:0275556813',
+                        representative: 'Charlotte Field',
+                        headshot:'assets/Charlotte headshot.png',
+                        phonenum: 'tel:0272365552',
                         ),),
                         );
                   }),
