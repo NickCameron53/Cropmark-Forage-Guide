@@ -6,7 +6,6 @@ import 'matrixfe.dart';
 import 'ultraar1.dart';
 import 'raidernea.dart';
 import 'avatarnea.dart';
-import 'kai.dart';
 import 'barrieru2.dart';
 import 'kainui.dart';
 import 'vision.dart';
@@ -79,25 +78,20 @@ class perennialgrass extends StatelessWidget {
         MaterialPageRoute(builder: (context) => avatarnea()),
       );
       break;
+
     case 5:
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => kai()),
-      );
-      break;
-    case 6:
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => barrieru2()),
       );
       break;
-    case 7:
+    case 6:
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => kainui()),
       );
       break;
-    case 8:
+    case 7:
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => vision()),
@@ -167,16 +161,9 @@ class perennialgrass extends StatelessWidget {
                 ),
               ),
               PopupMenuDivider(),
+
               PopupMenuItem<int>(
                 value: 5,
-                child: Text(
-                  'Kai perennial ryegrass',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              PopupMenuDivider(),
-              PopupMenuItem<int>(
-                value: 6,
                 child: Text(
                   'Barrier festulolium grass',
                   style: TextStyle(color: Colors.white),
@@ -184,7 +171,7 @@ class perennialgrass extends StatelessWidget {
               ),
               PopupMenuDivider(),
               PopupMenuItem<int>(
-                value: 7,
+                value: 6,
                 child: Text(
                   'Kainui cocksfoot',
                   style: TextStyle(color: Colors.white),
@@ -192,7 +179,7 @@ class perennialgrass extends StatelessWidget {
               ),
               PopupMenuDivider(),
               PopupMenuItem<int>(
-                value: 8,
+                value: 7,
                 child: Text(
                   'Vision cocksfoot',
                   style: TextStyle(color: Colors.white),
@@ -353,17 +340,6 @@ if (region == "Lower South Island") ...[
                     onPressed: () {
                       Navigator.push(context,
                         MaterialPageRoute(builder: (context) => avatarnea()),
-                      );}),
-              ),
-            ),
-
-            Container(
-              child: Align(
-                child: ElevatedButton(
-                    child: Text('Kai'),
-                    onPressed: () {
-                      Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => kai()),
                       );}),
               ),
             ),

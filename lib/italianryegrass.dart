@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'main.dart';
 import 'appeal.dart';
-import 'sonik.dart';
 import 'vibe.dart';
 import 'blade.dart';
 class italianryegrass extends StatelessWidget {
@@ -40,19 +39,14 @@ class italianryegrass extends StatelessWidget {
           MaterialPageRoute(builder: (context) => appeal()),
         );
         break;
+
       case 2:
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => sonik()),
-        );
-        break;
-      case 3:
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => vibe()),
         );
         break;
-      case 4:
+      case 3:
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => blade()),
@@ -98,16 +92,9 @@ class italianryegrass extends StatelessWidget {
                 ),
               ),
               PopupMenuDivider(),
+
               PopupMenuItem<int>(
                 value: 2,
-                child: Text(
-                  'Sonik Italian ryegrass',
-                  style: TextStyle(color: Colors.white),
-                ),
-              ),
-              PopupMenuDivider(),
-              PopupMenuItem<int>(
-                value: 3,
                 child: Text(
                   'Vibe Italian ryegrass',
                   style: TextStyle(color: Colors.white),
@@ -115,7 +102,7 @@ class italianryegrass extends StatelessWidget {
               ),
               PopupMenuDivider(),
               PopupMenuItem<int>(
-                value: 4,
+                value: 3,
                 child: Text(
                   'Blade Italian ryegrass',
                   style: TextStyle(color: Colors.white),
@@ -182,15 +169,6 @@ class italianryegrass extends StatelessWidget {
                     );}),
             ),
 
-            Container(
-              padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),
-              child: ElevatedButton(
-                  child: Text('Sonik'),
-                  onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(
-                        builder: (context) => sonik()),
-                    );}),
-            ),
 
             Container(
               padding: EdgeInsets.fromLTRB(80.0, 3.0, 80.0, 3.0),

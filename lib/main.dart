@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'forageregion.dart';
-
+import 'package:new_version/new_version.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
